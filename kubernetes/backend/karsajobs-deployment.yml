@@ -1,0 +1,40 @@
+apiVersion: apps/v1   # versi api
+kind: Deployment      # jenis objek
+metadata:
+  name: karsajobs-be
+  labels:
+    app: karsajobs-be
+    tier: be
+spec:
+  replicas: 1 # jumlah replika Pod
+  selector: # selector untuk mencocokkan dengan label Pod
+    matchLabels:
+      app: karsajobs-be
+      tier: be
+  template: # template untuk membuat Pod
+    metadata:
+      labels:
+        app: karsajobs-be
+        tier: be
+    spec:
+      containers: # konfigurasi container
+      - name: server
+        image: ghcr.io/ignatiusbarry69/karsajobs:latest
+        imagePullPolicy: IfNotPresent # policy untuk menarik image dari registry
+        ports:
+          - containerPort: 8080 # port yang di-expose di container
+        env:
+          - name: APP_PORT
+            value: "8080" # port aplikasi
+          - name: MONGO_HOST
+            value: karsajobs-db # nama service database
+          - name: MONGO_USER
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret # nama objek secret
+                key: MONGO_ROOT_USERNAME # key untuk username dalam secret
+          - name: MONGO_PASS
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret # nama objek secret
+                key: MONGO_ROOT_PASSWORD # key untuk password dalam secret
