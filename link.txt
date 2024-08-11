@@ -1,0 +1,5 @@
+shipping service:
+ghcr.io/ignatiusbarry69/shipping-service:latest
+
+order service:
+ghcr.io/ignatiusbarry69/order-service:latest
