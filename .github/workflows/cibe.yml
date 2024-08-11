@@ -32,7 +32,7 @@ jobs:
         run: go test -v -short --count=1 $(go list ./...)
 
       # Runs a set of commands using the runners shell
-      - name: build karsajobs ui
+      - name: build karsajobs be
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
