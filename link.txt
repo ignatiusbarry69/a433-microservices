@@ -3,3 +3,7 @@ https://github.com/users/ignatiusbarry69/packages/container/package/karsajobs
 
 frontend:
 https://github.com/users/ignatiusbarry69/packages/container/package/karsajobs-ui
+
+note:
+berhubung sudah terlanjur tersubmit dan sy lupa bilang, kalau dilihat itu grafananya di gambar
+diakses dr port 3000 karena sy portforward dr ec2
